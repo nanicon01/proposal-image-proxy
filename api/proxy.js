@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
 
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
@@ -24,9 +24,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    const decodedUrl = decodeURIComponent(url);
-
-    const response = await fetch(decodedUrl, {
+    const response = await fetch(decodeURIComponent(url), {
       method: "GET",
       headers: {
         "Authorization": token,
@@ -34,18 +32,10 @@ export default async function handler(req, res) {
       }
     });
 
-    if (!response.ok) {
-      res.status(response.status).json({ 
-        error: "Failed to fetch image",
-        status: response.status
-      });
-      return;
-    }
-
     const arrayBuffer = await response.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     const contentType = response.headers.get("content-type") 
-      ?? "image/jpeg";
+      || "image/jpeg";
 
     res.setHeader("Content-Type", contentType);
     res.setHeader("Cache-Control", "public, max-age=3600");
@@ -58,22 +48,3 @@ export default async function handler(req, res) {
     });
   }
 }
-```
-
-5. Click **Commit changes**
-
----
-
-## Also Confirm MONDAY_TOKEN Is Saved
-
-1. Vercel → **Settings** → **Environment Variables**
-2. Confirm **MONDAY_TOKEN** is listed
-3. If not there — add it now
-
----
-
-## Wait for Auto Deploy
-
-Vercel will auto deploy in 30 seconds. Then test:
-```
-https://proposal-image-proxy.vercel.app/api/proxy
