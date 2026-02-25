@@ -5,21 +5,3 @@
     "node": "18.x"
   }
 }
-```
-
-6. Click **Commit changes**
-
----
-
-## Vercel Will Auto-Deploy
-
-After you commit:
-1. Wait 30 seconds
-2. Go to Vercel → **Deployments** tab
-3. You should see a new deployment with **Ready** in green
-
----
-
-## Then Test:
-```
-https://proposal-image-proxy.vercel.app/api/proxy
