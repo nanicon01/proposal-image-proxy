@@ -1,7 +1,26 @@
 {
-  "functions": {
-    "api/proxy.js": {
-      "runtime": "node@18"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/proxy.js",
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/proxy",
+      "dest": "/api/proxy.js"
+    }
+  ]
 }
+```
+
+5. Click **Commit changes**
+
+---
+
+## Then Vercel Will Auto Deploy
+
+Wait 30 seconds then test:
+```
+https://proposal-image-proxy.vercel.app/api/proxy
