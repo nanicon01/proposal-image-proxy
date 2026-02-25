@@ -1,0 +1,21 @@
+{
+  "name": "proposal-image-proxy",
+  "version": "1.0.0",
+  "engines": {
+    "node": "18.x"
+  }
+}
+```
+4. Click **Commit new file**
+
+---
+
+## After Adding Both Files
+
+Go to Vercel:
+1. Click **Deployments** tab
+2. Click **3 dots** → **Redeploy**
+3. Wait 30 seconds
+4. Test this URL:
+```
+https://your-vercel-url.vercel.app/api/proxy
