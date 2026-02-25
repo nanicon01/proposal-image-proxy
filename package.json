@@ -6,16 +6,20 @@
   }
 }
 ```
-4. Click **Commit new file**
+
+6. Click **Commit changes**
 
 ---
 
-## After Adding Both Files
+## Vercel Will Auto-Deploy
 
-Go to Vercel:
-1. Click **Deployments** tab
-2. Click **3 dots** → **Redeploy**
-3. Wait 30 seconds
-4. Test this URL:
+After you commit:
+1. Wait 30 seconds
+2. Go to Vercel → **Deployments** tab
+3. You should see a new deployment with **Ready** in green
+
+---
+
+## Then Test:
 ```
-https://your-vercel-url.vercel.app/api/proxy
+https://proposal-image-proxy.vercel.app/api/proxy
