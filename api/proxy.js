@@ -17,20 +17,33 @@ module.exports = async function handler(req, res) {
       return;
     }
 
-    const token = process.env.MONDAY_TOKEN;
+    const decodedUrl = decodeURIComponent(url);
 
-    if (!token) {
-      res.status(500).json({ error: "MONDAY_TOKEN not configured" });
-      return;
+    const isS3Url = decodedUrl.includes("amazonaws.com") || 
+                    decodedUrl.includes("X-Amz-Algorithm");
+
+    const headers = {};
+
+    if (!isS3Url) {
+      const token = process.env.MONDAY_TOKEN;
+      if (token) {
+        headers["Authorization"] = token;
+      }
     }
 
-    const response = await fetch(decodeURIComponent(url), {
+    const response = await fetch(decodedUrl, {
       method: "GET",
-      headers: {
-        "Authorization": token,
-        "Accept": "image/*"
-      }
+      headers: headers
     });
+
+    if (!response.ok) {
+      const text = await response.text();
+      res.status(response.status).json({ 
+        error: "Failed to fetch image",
+        message: text
+      });
+      return;
+    }
 
     const arrayBuffer = await response.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
