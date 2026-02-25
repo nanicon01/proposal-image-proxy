@@ -13,14 +13,3 @@
     }
   ]
 }
-```
-
-5. Click **Commit changes**
-
----
-
-## Then Vercel Will Auto Deploy
-
-Wait 30 seconds then test:
-```
-https://proposal-image-proxy.vercel.app/api/proxy
