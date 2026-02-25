@@ -5,3 +5,12 @@
     "node": "24.x"
   }
 }
+```
+
+5. Click **Commit changes**
+
+---
+
+## Wait 30 Seconds Then Test:
+```
+https://proposal-image-proxy.vercel.app/api/proxy
