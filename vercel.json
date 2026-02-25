@@ -1,15 +1,18 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/proxy.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/proxy",
-      "dest": "/api/proxy.js"
-    }
-  ]
+  "version": 2
 }
+```
+
+5. Click **Commit changes**
+
+---
+
+That's it. Vercel automatically detects the `api` folder and runs it as serverless functions — you don't need to tell it anything else.
+
+---
+
+## Wait 30 Seconds for Auto Deploy
+
+Then test:
+```
+https://proposal-image-proxy.vercel.app/api/proxy
